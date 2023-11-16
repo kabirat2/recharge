@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main{
+            background-color: white;
+            width: 500px;
+            height: 300px;
+            box-shadow: 10px 5px 10px black;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+        .load{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .load select{
+           margin: 10px;
+        }
+        #LoadCard{
+            width: 250px;
+            height: 30px;
+
+        }
+        button{
+            width: 100px;
+            height: 30px;
+
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="load">
+        <h2>Network Provider</h2>
+        <select name="" id="network">
+            <option value="MTN">MTN</option>
+            <option value="MTN">glo</option>
+            <option value="MTN">airtel</option>
+            <option value="MTN">9mobil</option>
+        </select>
+        <label for="">Amount</label>
+        <select name="" id="amount">
+            <option value="100">100</option>
+            <option value="200">200</option>
+            <option value="200">500</option>
+            <option value="200">1000</option>
+        </select>
+
+         <button onclick="genPin()">Generate Pin</button> 
+        <h1 id="displayPin"></h1>
+
+        <h1>Load Airtime</h1>
+        <input type="text" placeholder="*555*pin#" id="LoadCard">
+        <button onclick="LoadAirCard()">click</button>
+        <!-- <h1 id="dev"></h1> -->
+        </div>
+    </main>
+</body>
+</html>
+<script>
+    let amount = document.getElementById("amount");
+    let network = document.getElementById("network");
+
+
+    function genPin(){
+        let pin = "";
+            for (let i = 0; i < 15; i++) {
+                    pin += Math.floor(Math.random() * 10);
+                }
+        displayPin.innerHTML = pin
+    }
+    let LoadAirtime = document.getElementById("LoadCard");
+
+    function LoadAirCard() {
+        let pin = document.getElementById("displayPin").innerHTML
+        if(!LoadAirtime.value.startsWith("*555") || !LoadAirtime.value.endsWith("#")){
+            alert("Invalid Code")
+        }else{
+            alert(`congrat! your special 100 plan has been activated`)
+        }
+    }
+</script>
